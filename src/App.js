@@ -28,7 +28,7 @@ const App = () => {
     <MovieContainer>
       {movies.map((movie) => (
         <div key={movie.id}>
-          <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
+          <img src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} />
           <MovieCard>{movie.title}</MovieCard>
         </div>
       ))}
@@ -45,7 +45,7 @@ const MovieContainer = styled.div`
 `;
 
 const MovieCard = styled.div`
-  width: 490px;
+  width: 285px;
   height: 300px;
   margin: 10px;
   background-color: #f5f5f5;
