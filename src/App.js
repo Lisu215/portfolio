@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import Pagination from "react-js-pagination";
+import { Button } from "bootstrap";
 
 const App = () => {
   const [movies, setMovies] = useState([]);
@@ -54,8 +55,8 @@ const App = () => {
                     : "Untitled"}
                 </Card.Title>
                 <Card.Text style={{ height: 150 }}>
-                  {movie.overview.length > 180
-                    ? movie.overview.substring(0, 180) + "..."
+                  {movie.overview.length > 130
+                    ? movie.overview.substring(0, 130) + "..."
                     : movie.overview}
                 </Card.Text>
               </Card.Body>
