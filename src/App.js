@@ -74,7 +74,6 @@ const App = () => {
 
   return (
     <div className="wrap">
-      {scroll && <TopBtn onClick={scrollToTop}>Top</TopBtn>}
       <Container>
         <Row className="justify-content-md-center">
           {movies.map((movie) => (
@@ -117,22 +116,3 @@ const App = () => {
   );
 };
 export default App;
-
-const TopBtn = styled.button`
-  position: fixed;
-  bottom: 70px;
-  right: 100px;
-  z-index: 99;
-  background-color: #337ab7;
-  color: #fff;
-  padding: 15px;
-  border: none;
-  border-radius: 100%;
-  font-size: 20px;
-  font-weight: bold;
-  cursor: pointer;
-  &:hover {
-    background-color: #555;
-    color: white;
-  }
-`;
