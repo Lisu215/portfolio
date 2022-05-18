@@ -29,10 +29,29 @@ const App = () => {
     console.log(response.data.results);
   };
 
+  const durationScrollTo = (y, duration = 1000) => {
+    const stepY = (y - window.scrollY) / duration;
+
+    const currentY = window.scrollY;
+
+    const startTime = new Date().getTime();
+
+    const scrollInterval = setInterval(() => {
+      const now = new Date().getTime() - startTime;
+
+      window.scrollTo({ top: currentY + stepY * now });
+
+      if (duration <= now) {
+        clearInterval(scrollInterval);
+      }
+    }, 1);
+  };
+
   const handlePageChange = (pageNumber) => {
     setPage(pageNumber);
     const endpoint = `${BASE_URL}/trending/all/week?api_key=${API_KEY}&language=ko&page=${pageNumber}`;
     fetchApi(endpoint);
+    window.scrollTo({ top: 0 });
   };
 
   const scrollToTop = () => {
@@ -89,6 +108,8 @@ const App = () => {
           activePage={page}
           totalItemsCount={200}
           pageRangeDisplayed={5}
+          prevPageText={"‹"}
+          nextPageText={"›"}
           onChange={handlePageChange}
         />
       </Container>
