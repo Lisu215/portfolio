@@ -24,6 +24,7 @@ ul.pagination li a {
 }
 ul.pagination li.active a {
   color: white;
+  pointer-events: none;
 }
 ul.pagination li.active {
   background-color: #337ab7;
