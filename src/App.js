@@ -50,7 +50,7 @@ const App = () => {
     <div className="wrap">
       <Navbar bg="light" expand="lg">
         <Container>
-          <Navbar.Brand href="/index" className="brand">
+          <Navbar.Brand href="/portfolio" className="brand">
             MovieApp
           </Navbar.Brand>
           <FaSearch size="19" className="icon" />
