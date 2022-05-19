@@ -1,11 +1,19 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Col, Container, Card, Row } from "react-bootstrap";
+import {
+  Col,
+  Container,
+  Card,
+  Row,
+  Navbar,
+  FormControl,
+} from "react-bootstrap";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Pagination from "react-js-pagination";
 import styled from "styled-components";
+import { FaSearch, FaTimes } from "react-icons/fa";
 
 const App = () => {
   const [movies, setMovies] = useState([]);
@@ -33,21 +41,41 @@ const App = () => {
     setPage(pageNumber);
     const endpoint = `${BASE_URL}/trending/all/week?api_key=${API_KEY}&language=ko&page=${pageNumber}`;
     fetchApi(endpoint);
-    window.scrollTo({ top: 0 });
+    window.scrollTo({
+      top: 0,
+    });
   };
 
   return (
     <div className="wrap">
+      <Navbar bg="light" expand="lg">
+        <Container>
+          <Navbar.Brand href="/index" className="brand">
+            MovieApp
+          </Navbar.Brand>
+          <FaSearch size="19" className="icon" />
+          <Search />
+        </Container>
+      </Navbar>
       <Container>
         <Row className="justify-content-md-center">
           {movies.map((movie) => (
-            <Col key={movie.id} xs={12} md={3} style={{ padding: 20 }}>
+            <Col
+              key={movie.id}
+              xs={12}
+              md={3}
+              style={{
+                padding: 20,
+              }}
+            >
               <Card>
                 <Card.Img
                   variant="top"
                   src={`${IMAGE_URL}${movie.poster_path}`}
                   alt={movie.id}
-                  style={{ height: 350 }}
+                  style={{
+                    height: 350,
+                  }}
                 />
                 <Card.Body>
                   <Card.Title>
@@ -57,7 +85,11 @@ const App = () => {
                         : movie.title
                       : "Untitled"}
                   </Card.Title>
-                  <Card.Text style={{ height: 150 }}>
+                  <Card.Text
+                    style={{
+                      height: 150,
+                    }}
+                  >
                     {movie.overview.length > 130
                       ? movie.overview.substring(0, 130) + "..."
                       : movie.overview}
@@ -80,3 +112,17 @@ const App = () => {
   );
 };
 export default App;
+
+const Search = styled.input`
+  width: 20%;
+  height: 40px;
+  margin-right: 10px;
+  border-radius: 5px;
+  border: 2px solid #000;
+  padding: 0 20px;
+  font-size: 16px;
+  outline: none;
+  &:focus {
+    border: 2px solid #337ab7;
+  }
+`;
