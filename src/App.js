@@ -20,11 +20,12 @@ const App = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
-  const [scroll, setScroll] = useState();
+  const [search, setSearch] = useState("");
 
   const API_KEY = `fae1f26c794f675b927cfed2a3fd14f0`;
   const BASE_URL = `https://api.themoviedb.org/3`;
   const IMAGE_URL = `https://image.tmdb.org/t/p/w300`;
+  const SEARCH_URL = `${BASE_URL}/search/movie?api_key=${API_KEY}&sort_by=&include_adult=false&query=${search}&language=ko&page=1`;
 
   useEffect(() => {
     const endpoint = `${BASE_URL}/trending/all/week?api_key=${API_KEY}&language=ko&page=${page}`;
@@ -47,6 +48,18 @@ const App = () => {
     });
   };
 
+  const handleSearch = async (e) => {
+    e.preventDefault();
+    const endpoint = `${SEARCH_URL}${search}&page=${page}`;
+    const response = await axios.get(endpoint);
+    setMovies([...response.data.results]);
+    setLoading(false);
+    setSearch("");
+    window.scrollTo({
+      top: 0,
+    });
+  };
+
   return (
     <div className="wrap">
       <Navbar bg="light" expand="lg">
@@ -60,8 +73,10 @@ const App = () => {
               placeholder="Search"
               className="me-2"
               aria-label="Search"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
             />
-            <Button>Search</Button>
+            <Button onClick={handleSearch}>Search</Button>
           </Form>
         </Container>
       </Navbar>
