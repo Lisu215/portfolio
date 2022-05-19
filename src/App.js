@@ -53,8 +53,16 @@ const App = () => {
           <Navbar.Brand href="/portfolio" className="brand">
             MovieApp
           </Navbar.Brand>
-          <FaSearch size="19" className="icon" />
-          <Search />
+
+          <Form className="d-flex">
+            <FormControl
+              type="search"
+              placeholder="Search"
+              className="me-2"
+              aria-label="Search"
+            />
+            <Button variant="outline-success">Search</Button>
+          </Form>
         </Container>
       </Navbar>
       <Container>
@@ -112,7 +120,7 @@ const App = () => {
   );
 };
 export default App;
-
+/*
 const Search = styled.input`
   width: 20%;
   height: 40px;
@@ -126,3 +134,6 @@ const Search = styled.input`
     border: 2px solid #337ab7;
   }
 `;
+<FaSearch size="19" className="icon" />
+          <Search />
+*/
