@@ -8,7 +8,6 @@ import {
   Row,
   Navbar,
   FormControl,
-  Button,
   Form,
 } from "react-bootstrap";
 import { useEffect, useState } from "react";
@@ -55,7 +54,6 @@ const App = () => {
           <Navbar.Brand href="/portfolio" className="brand">
             MovieApp
           </Navbar.Brand>
-
           <Form className="d-flex">
             <FormControl
               type="search"
@@ -63,7 +61,7 @@ const App = () => {
               className="me-2"
               aria-label="Search"
             />
-            <Button variant="outline-success">Search</Button>
+            <Button>Search</Button>
           </Form>
         </Container>
       </Navbar>
@@ -122,6 +120,23 @@ const App = () => {
   );
 };
 export default App;
+
+const Button = styled.button`
+  background: #fff;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+  border-radius: 4px;
+  color: #000;
+  font-size: 1em;
+  font-weight: bold;
+  padding: 0.25em 1em;
+  cursor: pointer;
+  &:hover {
+    background: #337ab7;
+    color: #fff;
+  }
+`;
+
 /*
 const Search = styled.input`
   width: 20%;
