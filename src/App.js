@@ -21,6 +21,7 @@ const App = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
+  const [totalPage, setTotalPage] = useState(1);
   const [search, setSearch] = useState("");
   const [noFound, setNoFound] = useState(false);
 
@@ -37,6 +38,7 @@ const App = () => {
   const fetchApi = async (endpoint) => {
     const response = await axios.get(endpoint);
     setMovies([...response.data.results]);
+    setTotalPage(response.data.total_pages);
     setLoading(false);
     console.log(response.data.results);
   };
@@ -59,13 +61,12 @@ const App = () => {
     const endpoint = `${SEARCH_URL}${page}`;
     const response = await axios.get(endpoint);
     setMovies([...response.data.results]);
+    setTotalPage(response.data.total_pages);
     setLoading(false);
     window.scrollTo({
       top: 0,
     });
-    if (response.data.results.length === 0) {
-      setNoFound(true);
-    }
+    response.data.results.length === 0 ? setNoFound(true) : setNoFound(false);
   };
 
   return (
@@ -87,12 +88,12 @@ const App = () => {
                 setPage(1);
               }}
             />
-            <Button onClick={handleSearch}>Search</Button>
+            <Button onClick={handleSearch}>검색</Button>
           </Form>
         </Container>
       </Navbar>
 
-      {noFound == true ? (
+      {noFound === true ? (
         <div className="no-found">
           "{search}"의 검색 결과를 찾을 수 없습니다.
           <img src={img404} alt="notfound" />
@@ -104,7 +105,10 @@ const App = () => {
               <Col
                 key={movie.id}
                 xs={12}
-                md={3}
+                md={6}
+                lg={6}
+                xl={6}
+                xxl={3}
                 style={{
                   padding: 20,
                 }}
@@ -121,8 +125,8 @@ const App = () => {
                   <Card.Body>
                     <Card.Title>
                       {movie.title
-                        ? movie.title.length > 20
-                          ? movie.title.substring(0, 20) + "..."
+                        ? movie.title.length > 16
+                          ? movie.title.substring(0, 16) + "..."
                           : movie.title
                         : "Untitled"}
                     </Card.Title>
@@ -142,7 +146,7 @@ const App = () => {
           </Row>
           <Pagination
             activePage={page}
-            totalItemsCount={200}
+            totalItemsCount={totalPage}
             pageRangeDisplayed={5}
             prevPageText={"‹"}
             nextPageText={"›"}
@@ -156,6 +160,7 @@ const App = () => {
 export default App;
 
 const Button = styled.button`
+  width: 80px;
   background: #fff;
   border: 1px solid #ccc;
   margin-right: 10px;

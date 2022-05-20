@@ -61,3 +61,7 @@ ul.pagination li a.active {
   align-items: center;
   height: 100%;
 }
+
+.me-3 {
+  margin-left: 10px;
+}
