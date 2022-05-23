@@ -1,0 +1,48 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+ul.pagination li {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #e2e2e2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+ul.pagination li a {
+  text-decoration: none;
+  color: #337ab7;
+  font-size: 1rem;
+}
+ul.pagination li.active a {
+  color: white;
+  pointer-events: none;
+}
+ul.pagination li.active {
+  background-color: #337ab7;
+}
+ul.pagination li a:hover,
+ul.pagination li a.active {
+  color: blue;
+}
+.page-selection {
+  width: 48px;
+  height: 30px;
+  color: #337ab7;
+}
+.brand {
+  font-weight: bold;
+  margin-left: 10px;
+}
+.icon {
+  z-index: 1;
+  margin-right: -1360px;
+}
+.icon:hover {
+  cursor: pointer;
+  color: #337ab7;
+}

@@ -1,0 +1,10 @@
+.no-found {
+  display: flex;
+  flex-direction: column;
+  margin-top: 70px;
+  font-size: 2rem;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
