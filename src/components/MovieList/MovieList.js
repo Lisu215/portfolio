@@ -1,6 +1,7 @@
 import React from "react";
 import { Col, Container, Card, Row } from "react-bootstrap";
 import { IMAGE_URL } from "../../api/MovieApi";
+import { Link } from "react-router-dom";
 
 const MovieList = ({ movies }) => {
   return (
@@ -19,19 +20,22 @@ const MovieList = ({ movies }) => {
             }}
           >
             <Card>
-              <Card.Img
-                variant="top"
-                src={`${IMAGE_URL}${movie.poster_path}`}
-                alt={movie.id}
-                style={{
-                  height: 350,
-                }}
-              />
+              <Link to="/detail">
+                <Card.Img
+                  variant="top"
+                  src={`${IMAGE_URL}${movie.poster_path}`}
+                  alt={movie.id}
+                  style={{
+                    height: 350,
+                  }}
+                />
+              </Link>
+
               <Card.Body>
                 <Card.Title>
                   {movie.title
-                    ? movie.title.length > 16
-                      ? movie.title.substring(0, 16) + "..."
+                    ? movie.title.length > 13
+                      ? movie.title.substring(0, 13) + "..."
                       : movie.title
                     : "Untitled"}
                 </Card.Title>
