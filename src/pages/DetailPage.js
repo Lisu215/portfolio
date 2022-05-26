@@ -34,37 +34,39 @@ const DetailPage = () => {
 
   return (
     <div className="detail-container">
-      <div className="detail-title">
-        <h1>{movies.title}</h1>
-        <h2>{movies.tagline}</h2>
-      </div>
-      <div className="detail-rate">
-        <h3>평점</h3>
-        <h4>{movies.vote_average} / 10</h4>
-      </div>
-      <div>
-        <img
-          className="detail-img"
-          src={`${IMAGE_URL}${movies.poster_path}`}
-          alt={movies.title}
+      <div className="detail-main">
+        <div className="detail-title">
+          <h1>{movies.title}</h1>
+          <h2>{movies.tagline}</h2>
+        </div>
+        <div className="detail-rate">
+          <h3>평점</h3>
+          <h4>{movies.vote_average} / 10</h4>
+        </div>
+        <div>
+          <img
+            className="detail-img"
+            src={`${IMAGE_URL}${movies.poster_path}`}
+            alt={movies.title}
+          />
+        </div>
+        <iframe
+          className="detail-trailer"
+          title={movies.title}
+          width="900"
+          height="550"
+          src={`https://www.youtube.com/embed/${Trailer}?autoplay=1`}
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          frameborder="0"
+          allowfullscreen
         />
-      </div>
-      <iframe
-        className="detail-trailer"
-        title={movies.title}
-        width="900"
-        height="550"
-        src={`https://www.youtube.com/embed/${Trailer}?autoplay=1`}
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-        frameborder="0"
-        allowfullscreen
-      />
-      <div className="detail-overview">
-        <h3>줄거리</h3>
-        <p>{movies.overview}</p>
+        <div className="detail-overview">
+          <h3>줄거리</h3>
+          <p>{movies.overview}</p>
 
-        <h3>출연진</h3>
-        <img className="detail-cast-img" />
+          <h3>출연진</h3>
+          <img className="detail-cast-img" />
+        </div>
       </div>
     </div>
   );
