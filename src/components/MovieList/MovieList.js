@@ -1,9 +1,10 @@
 import React from "react";
 import { Col, Container, Card, Row } from "react-bootstrap";
 import { IMAGE_URL } from "../../api/MovieApi";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const MovieList = ({ movies }) => {
+const MovieList = ({ props, movies }) => {
+  const navigate = useNavigate();
   return (
     <Container>
       <Row className="justify-content-md-center">
@@ -20,16 +21,17 @@ const MovieList = ({ movies }) => {
             }}
           >
             <Card>
-              <Link to="/detail">
-                <Card.Img
-                  variant="top"
-                  src={`${IMAGE_URL}${movie.poster_path}`}
-                  alt={movie.id}
-                  style={{
-                    height: 350,
-                  }}
-                />
-              </Link>
+              <Card.Img
+                variant="top"
+                src={`${IMAGE_URL}${movie.poster_path}`}
+                alt={movie.id}
+                style={{
+                  height: 350,
+                }}
+                onClick={() => {
+                  navigate(`/detail/${movie.id}`);
+                }}
+              />
 
               <Card.Body>
                 <Card.Title>

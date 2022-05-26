@@ -1,0 +1,44 @@
+.detail-container {
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 3rem 0;
+}
+
+.detail-title {
+  position: relative;
+  right: 20%;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.detail-rate {
+  position: absolute;
+  top: 7%;
+  right: 30%;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.detail-img {
+  position: relative;
+  right: 80%;
+  width: 500px;
+  height: 552px;
+  border: 4px solid grey;
+}
+
+.detail-trailer {
+  position: absolute;
+  right: 10%;
+  bottom: -29%;
+}
+
+.detail-cast-img {
+  width: 200px;
+  height: 200px;
+}
