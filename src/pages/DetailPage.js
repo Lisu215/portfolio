@@ -20,7 +20,10 @@ const DetailPage = () => {
 
     fetch(moviecast)
       .then((response) => response.json())
-      .then((data) => setCast(data));
+      .then((data) => {
+        const cast = data.cast.slice(0, 9);
+        setCast(cast);
+      });
 
     fetch(movietrailer)
       .then((response) => response.json())
@@ -99,9 +102,9 @@ const DetailPage = () => {
 
           <h3>출연진</h3>
           <div className="detail-cast">
-            {cast.cast &&
-              cast.cast.map((cast, index) => (
-                <div key={index} className="detail-cast-item">
+            {cast &&
+              cast.map((cast) => (
+                <div className="detail-cast-item" key={cast.id}>
                   {cast.profile_path ? (
                     <img
                       className="detail-cast-img"
