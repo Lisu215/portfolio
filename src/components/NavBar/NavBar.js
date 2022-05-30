@@ -13,7 +13,7 @@ const NavBar = ({ search, handleSearch, onSearch }) => {
         <Form className="d-flex">
           <FormControl
             type="search"
-            placeholder="검색"
+            placeholder="영화 제목을 입력하세요"
             className="me-3"
             aria-label="Search"
             value={search}

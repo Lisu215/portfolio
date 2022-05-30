@@ -3,7 +3,7 @@ import { Col, Container, Card, Row } from "react-bootstrap";
 import { IMAGE_URL } from "../../api/MovieApi";
 import { useNavigate } from "react-router-dom";
 
-const MovieList = ({ props, movies }) => {
+const MovieList = ({ movies }) => {
   const navigate = useNavigate();
   return (
     <Container>
@@ -27,6 +27,7 @@ const MovieList = ({ props, movies }) => {
                 alt={movie.id}
                 style={{
                   height: 350,
+                  cursor: "pointer",
                 }}
                 onClick={() => {
                   navigate(`/detail/${movie.id}`);
@@ -39,7 +40,7 @@ const MovieList = ({ props, movies }) => {
                     ? movie.title.length > 13
                       ? movie.title.substring(0, 13) + "..."
                       : movie.title
-                    : "Untitled"}
+                    : movie.name}
                 </Card.Title>
                 <Card.Text
                   style={{

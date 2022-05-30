@@ -17,7 +17,7 @@ const MainPage = () => {
   const SEARCH_URL = `${BASE_URL}/search/movie?api_key=${API_KEY}&sort_by=&include_adult=false&query=${search}&language=ko&page=`;
 
   useEffect(() => {
-    const endpoint = `${BASE_URL}/trending/all/week?api_key=${API_KEY}&language=ko&page=${page}`;
+    const endpoint = `${BASE_URL}/trending/movie/week?api_key=${API_KEY}&language=ko&page=${page}`;
     fetchApi(endpoint);
   }, [page]);
 
@@ -30,7 +30,7 @@ const MainPage = () => {
 
   const handlePageChange = (pageNumber) => {
     setPage(pageNumber);
-    const endpoint = `${BASE_URL}/trending/all/week?api_key=${API_KEY}&language=ko&page=${pageNumber}`;
+    const endpoint = `${BASE_URL}/trending/movie/week?api_key=${API_KEY}&language=ko&page=${pageNumber}`;
     fetchApi(endpoint);
     window.scrollTo({
       top: 0,
@@ -60,17 +60,17 @@ const MainPage = () => {
 
   return (
     <div className="wrap">
-      <NavBar search={search} handleSearch={handleSearch} onSearch={onSearch} />
+      <NavBar search={search} handleSearch={handleSearch} onSearch={onSearch} />{" "}
       {noFound === true ? (
         <NotFound search={search} />
       ) : (
         <MovieList movies={movies} />
-      )}
+      )}{" "}
       <PageNation
         page={page}
         totalPage={totalPage}
         handlePageChange={handlePageChange}
-      />
+      />{" "}
     </div>
   );
 };
