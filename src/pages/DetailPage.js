@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { API_KEY, BASE_URL, IMAGE_URL } from "./../api/MovieApi";
 import { useParams } from "react-router-dom";
 import "./DetailPage.css";
+import { RiArrowGoBackLine } from "react-icons/ri";
+import Rating from "@mui/material/Rating";
+import { textAlign } from "@mui/system";
 
 const DetailPage = () => {
   const movieId = useParams().id;
@@ -37,18 +40,30 @@ const DetailPage = () => {
 
   return (
     <div className="detail-container">
+      <RiArrowGoBackLine
+        className="detail-back"
+        onClick={() => (window.location.href = "/portfolio")}
+      />
       <div className="detail-main">
         <div className="detail-top">
-          <div className="detail-title">
-            <h1>{movies.title}</h1>
-            <h2>{movies.tagline}</h2>
+          <div className="detail-info">
+            <div className="detail-title">{movies.title}</div>
+            <div className="detail-tagline">{movies.tagline}</div>
           </div>
 
           <div className="detail-rate">
-            <h3>평점</h3>
-            <h4>{movies.vote_average} / 10</h4>
+            <h2 style={{ fontWeight: "bold", textAlign: "center" }}>평점</h2>
+            <Rating
+              name="read-only"
+              value={movies.vote_average / 2}
+              readOnly
+              style={{ fontSize: "3rem" }}
+            />
           </div>
         </div>
+
+        <div className="hr" />
+
         <div className="detail-img-trailer">
           <img
             className="detail-img"
@@ -119,7 +134,7 @@ const DetailPage = () => {
                     />
                   )}
                   <div className="detail-cast-name">
-                    <h4>{cast.name}</h4>
+                    <h3>{cast.name}</h3>
 
                     <div className="detail-character">{cast.character} 역</div>
                   </div>

@@ -31,6 +31,7 @@ const MovieList = ({ movies }) => {
                 }}
                 onClick={() => {
                   navigate(`/detail/${movie.id}`);
+                  window.scrollTo(0, 0);
                 }}
               />
 
