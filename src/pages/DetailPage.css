@@ -1,4 +1,5 @@
 .detail-container {
+  padding: 3.5rem 0 0 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,10 +16,11 @@
 }
 
 .detail-back {
-  position: sticky;
-  top: 4rem;
-  right: 110rem;
-  font-size: 5rem;
+  position: absolute;
+  align-items: center;
+  top: 1rem;
+  left: 3rem;
+  font-size: 5.5rem;
   color: black;
   cursor: pointer;
 }
@@ -110,6 +112,10 @@
   .detail-top {
     flex-direction: column;
   }
+  .detail-back {
+    top: 0.5rem;
+    left: 2rem;
+  }
   .detail-info {
     text-align: center;
     margin-left: 0;
@@ -144,7 +150,9 @@
 
 @media screen and (max-width: 800px) {
   .detail-back {
-    font-size: 4rem;
+    top: 0.1rem;
+    left: 0.1rem;
+    font-size: 4.5rem;
   }
   .detail-title {
     font-size: 2rem;

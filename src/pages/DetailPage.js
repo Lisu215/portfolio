@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 import { API_KEY, BASE_URL, IMAGE_URL } from "./../api/MovieApi";
 import { useParams } from "react-router-dom";
 import "./DetailPage.css";
-import { RiArrowGoBackLine } from "react-icons/ri";
+import { FaLongArrowAltLeft } from "react-icons/fa";
 import Rating from "@mui/material/Rating";
-import { textAlign } from "@mui/system";
 
 const DetailPage = () => {
   const movieId = useParams().id;
@@ -40,11 +39,11 @@ const DetailPage = () => {
 
   return (
     <div className="detail-container">
-      <RiArrowGoBackLine
-        className="detail-back"
-        onClick={() => (window.location.href = "/portfolio")}
-      />
       <div className="detail-main">
+        <FaLongArrowAltLeft
+          className="detail-back"
+          onClick={() => (window.location.href = "/portfolio")}
+        />
         <div className="detail-top">
           <div className="detail-info">
             <div className="detail-title">{movies.title}</div>
